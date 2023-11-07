@@ -1,15 +1,24 @@
 import { NavLink } from "react-router-dom";
 import logo from '../../assets/images/logo.png'
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 
 const Navbar = () => {
+     const {user,logOut,loading}=useContext(AuthContext)
+
+    
     const navLinks=<>
           <li><NavLink to='/'>Home</NavLink></li>
           <li><NavLink to='/addJob'>Add job</NavLink></li>
           <li><NavLink to='/postedJobs'>My posted jobs</NavLink></li>
           <li><NavLink to='/myBids'>My Bids</NavLink></li>
           <li><NavLink to='/bidRequest'>Bid Requests</NavLink></li>
-          <li><NavLink to='/login'>Login</NavLink></li>
+          { 
+            user?<li><button onClick={()=>logOut()}>LogOut</button></li>
+           :<li><NavLink to='/login'>Login</NavLink></li>
+          
+          }
     </>
     return (
         <div className="navbar bg-base-100">
@@ -33,7 +42,10 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <div className="flex gap-3 justify-center items-center">
+          <h2>{user?.displayName}</h2>
+          <img className="w-16" src={user?.photoURL} alt="" />
+          </div>
         </div>
       </div>
     );

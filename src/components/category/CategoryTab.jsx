@@ -15,7 +15,7 @@ const CategoryTab = () => {
         fetch(`http://localhost:5000/category/${selectedTab}`)
         .then(res=>res.json())
         .then(data=>{
-          console.log(data)
+          // console.log(data)
           setJobs(data)
         })
     },[selectedTab])

@@ -1,40 +1,53 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../authProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
+
 
 
 const Resister = () => {
   const [loginErr,setLoginErr]=useState();
-//   const { createUser } = useContext(AuthContext);
+  const { createUser,updateUser } = useContext(AuthContext);
   const location=useLocation();
   const navigate=useNavigate();
+  
 
   const handleResister = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const name=form.get('name');
     const email = form.get("email");
     const password = form.get("password");
+    const photoURL=form.get('photoURL')
+
+    console.log(name,email,password,photoURL)
 
     setLoginErr("");
 
-    if(!/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/.test(password)){
-      setLoginErr('password must have contain Minimum six characters, at least one capital letter, one number and one special character:');
+    if(!/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(password)){
+      setLoginErr('password must have contain Minimum eight characters, at least one capital letter, one number and one special character:');
       return;
    }
     
     // create user with email & password
-    createUser(email,password)
+
+     createUser(email,password)
     .then(result=>{
-      console.log(result.user);
+      const user=result.user
+      console.log(user);
+      
       navigate(location?.state?location.state:'/');
       Swal.fire('Resister is Successfull!')
-      
+
+      return updateUser(user,name,photoURL);
+        
     })
     .catch(error=>{
       console.log(error);
       setLoginErr(error.message);
     })
+
   };
 
   return (
@@ -91,7 +104,7 @@ const Resister = () => {
             </label>
             <input
               type="text"
-              name="photoUrl"
+              name="photoURL"
               placeholder="photoURL"
               className="input input-bordered"
               required

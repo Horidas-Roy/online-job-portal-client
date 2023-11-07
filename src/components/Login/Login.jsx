@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 // import { AuthContext } from "../authProvider/AuthProvider";
 
 const Login = () => {
    
   const [loginErr,setLoginErr]=useState();
 
-//   const { SignInUser, googleSignIn, } = useContext(AuthContext);
+  const { logIn, googleSignIn, } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Login = () => {
     
 
     // log in user
-    SignInUser(email, password)
+    logIn(email, password)
       .then((result) => {
         navigate(location?.state ? location.state : "/");
         console.log(result);
