@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 import Resister from './components/Resister/Resister';
 import AddJob from './components/AddJob/AddJob';
 import JobDetails from './components/JobDetails/JobDetails';
+import MyBids from './pages/MyBids/MyBids';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           path:'/jobs/:id',
           element:<JobDetails></JobDetails>,
           loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+        },
+        {
+          path:'/myBids',
+          element:<MyBids></MyBids>
         }
     ]
 }
