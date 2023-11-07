@@ -12,7 +12,7 @@ const Navbar = () => {
           <li><NavLink to='/'>Home</NavLink></li>
           <li><NavLink to='/addJob'>Add job</NavLink></li>
           <li><NavLink to='/postedJobs'>My posted jobs</NavLink></li>
-          <li><NavLink to='/myBids'>My Bids</NavLink></li>
+          <li><NavLink to={`/myBids/${user?.email}`}>My Bids</NavLink></li>
           <li><NavLink to='/bidRequest'>Bid Requests</NavLink></li>
           { 
             user?<li><button onClick={()=>logOut()}>LogOut</button></li>

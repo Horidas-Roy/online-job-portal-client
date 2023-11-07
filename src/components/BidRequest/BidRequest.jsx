@@ -1,10 +1,8 @@
-import { useLoaderData } from "react-router-dom";
+import React from 'react';
 
-const MyBids = () => {
-    const bids=useLoaderData();
-    console.log(bids)
-  return (
-    <div className="overflow-x-auto px-20 py-10">
+const BidRequest = () => {
+    return (
+        <div className="overflow-x-auto px-20 py-10">
       <table className="table table-xs">
         <thead className="text-xl">
           <tr>
@@ -33,7 +31,7 @@ const MyBids = () => {
         </tbody>
       </table>
     </div>
-  );
+    );
 };
 
-export default MyBids;
+export default BidRequest;

@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const JobDetails = () => {
   const { user } = useContext(AuthContext);
@@ -26,7 +28,7 @@ const JobDetails = () => {
     const price = form.price.value;
     const status='pending'
     const user={
-      employer,applicant,deadline,price,status
+      employer,applicant,deadline,price,status,job_title
     }
     console.log(user);
     fetch('http://localhost:5000/bids',{
@@ -39,6 +41,7 @@ const JobDetails = () => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
+      toast("BID ON THIS PROJECT IS SUCCESSFULL!")
     })
 
   };
@@ -99,6 +102,7 @@ const JobDetails = () => {
               <input
                 type="date"
                 name="deadline"
+                required
                 placeholder="Type here deadline"
                 className="input input-bordered w-full max-w-xs"
               />
@@ -110,6 +114,7 @@ const JobDetails = () => {
               <input
                 type="text"
                 name="price"
+                required
                 placeholder={"$" + maximum_price + "~$" + minimum_price}
                 className="input input-bordered w-full max-w-xs"
               />
@@ -127,6 +132,7 @@ const JobDetails = () => {
           </div>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </form>
   );
 };
