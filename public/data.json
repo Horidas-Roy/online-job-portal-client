@@ -1,111 +1,110 @@
 [
-    {
-      "Employer": "employer1@example.com",
-      "Job title": "Front-End Web Developer",
-      "Deadline": "2023-11-15",
-      "Description": "We are seeking a Front-End Web Developer to create interactive and responsive user interfaces for our web applications.",
-      "Category": "Web Development",
-      "Minimum price": 60000,
-      "Maximum price": 80000
-    },
-    {
-      "Employer": "employer2@example.com",
-      "Job title": "Back-End Web Developer",
-      "Deadline": "2023-11-20",
-      "Description": "We need a Back-End Web Developer to build and maintain server-side components, APIs, and databases for our web applications.",
-      "Category": "Web Development",
-      "Minimum price": 65000,
-      "Maximum price": 85000
-    },
-    {
-      "Employer": "employer3@example.com",
-      "Job title": "Full-Stack Web Developer",
-      "Deadline": "2023-11-18",
-      "Description": "Join our team as a Full-Stack Web Developer and work on end-to-end development, from front-end interfaces to back-end systems.",
-      "Category": "Web Development",
-      "Minimum price": 70000,
-      "Maximum price": 90000
-    },
-    {
-      "Employer": "employer4@example.com",
-      "Job title": "Web Designer",
-      "Deadline": "2023-11-22",
-      "Description": "We are looking for a talented Web Designer to create visually stunning and user-friendly web layouts and graphics.",
-      "Category": "Web Design",
-      "Minimum price": 55000,
-      "Maximum price": 75000
-    },
-    {
-      "Employer": "employer5@example.com",
-      "Job title": "UX/UI Designer",
-      "Deadline": "2023-11-17",
-      "Description": "As a UX/UI Designer, you'll be responsible for enhancing user experiences through effective design and user interface strategies.",
-      "Category": "Web Design",
-      "Minimum price": 60000,
-      "Maximum price": 80000
-    },
-    {
-      "Employer": "employer6@example.com",
-      "Job title": "Database Administrator",
-      "Deadline": "2023-11-19",
-      "Description": "We need a Database Administrator to manage and optimize our databases, ensuring data integrity and performance.",
-      "Category": "Database Management",
-      "Minimum price": 70000,
-      "Maximum price": 90000
-    },
-    {
-      "Employer": "employer7@example.com",
-      "Job title": "DevOps Engineer",
-      "Deadline": "2023-11-25",
-      "Description": "Join our team as a DevOps Engineer to streamline development and deployment processes, ensuring efficient software delivery.",
-      "Category": "DevOps",
-      "Minimum price": 75000,
-      "Maximum price": 95000
-    },
-    {
-      "Employer": "employer8@example.com",
-      "Job title": "Mobile App Developer",
-      "Deadline": "2023-11-21",
-      "Description": "We are seeking a Mobile App Developer to create mobile applications for iOS and Android platforms.",
-      "Category": "Mobile App Development",
-      "Minimum price": 65000,
-      "Maximum price": 85000
-    },
-    {
-      "Employer": "employer9@example.com",
-      "Job title": "Data Scientist",
-      "Deadline": "2023-11-16",
-      "Description": "As a Data Scientist, you will analyze and interpret data to provide valuable insights for our organization.",
-      "Category": "Data Science",
-      "Minimum price": 75000,
-      "Maximum price": 95000
-    },
-    {
-      "Employer": "employer10@example.com",
-      "Job title": "Network Administrator",
-      "Deadline": "2023-11-23",
-      "Description": "We need a Network Administrator to maintain and optimize our network infrastructure, ensuring connectivity and security.",
-      "Category": "Network Administration",
-      "Minimum price": 70000,
-      "Maximum price": 90000
-    },
-    {
-      "Employer": "employer11@example.com",
-      "Job title": "Content Writer",
-      "Deadline": "2023-11-24",
-      "Description": "Join our team as a Content Writer to create engaging and informative content for our websites and marketing materials.",
-      "Category": "Content Creation",
-      "Minimum price": 55000,
-      "Maximum price": 75000
-    },
-    {
-      "Employer": "employer12@example.com",
-      "Job title": "Graphic Designer",
-      "Deadline": "2023-11-19",
-      "Description": "We are looking for a creative Graphic Designer to design visual assets and graphics for our digital and print materials.",
-      "Category": "Graphic Design",
-      "Minimum price": 60000,
-      "Maximum price": 80000
-    }
-  ]
-  
+  {
+      "employer": "royhoridas64@gmail.com",
+      "job_title": "Front-End Web Developer",
+      "deadline": "2023-11-15",
+      "description": "We are seeking a Front-End Web Developer to create interactive and responsive user interfaces for our web applications.",
+      "category": "Web Development",
+      "minimum_price": 60000,
+      "maximum_price": 80000
+  },
+  {
+      "employer": "moloy53@gmail.com",
+      "job_title": "Back-End Web Developer",
+      "deadline": "2023-11-20",
+      "description": "We need a Back-End Web Developer to build and maintain server-side components, APIs, and databases for our web applications.",
+      "category": "Web Development",
+      "minimum_price": 65000,
+      "maximum_price": 85000
+  },
+  {
+      "employer": "mdsagor54@gmail.com",
+      "job_title": "Full-Stack Web Developer",
+      "deadline": "2023-11-18",
+      "description": "Join our team as a Full-Stack Web Developer and work on end-to-end development, from front-end interfaces to back-end systems.",
+      "category": "Web Development",
+      "minimum_price": 70000,
+      "maximum_price": 90000
+  },
+  {
+      "employer": "pritom132@gmail.com",
+      "job_title": "Web Developer",
+      "deadline": "2023-11-22",
+      "description": "We are looking for a talented Web Developer to create visually stunning and user-friendly web layouts and graphics.",
+      "category": "Web Development",
+      "minimum_price": 55000,
+      "maximum_price": 75000
+  },
+  {
+      "employer": "sahid43@gmail.com",
+      "job_title": "Digital Marketing Manager",
+      "deadline": "2023-11-17",
+      "description": "As a Digital Marketing Manager, you'll be responsible for enhancing user experiences through effective design and user interface strategies.",
+      "category": "Digital Marketing",
+      "minimum_price": 60000,
+      "maximum_price": 80000
+  },
+  {
+      "employer": "majed98@gmail.com",
+      "job_title": "Social Media Manager",
+      "deadline": "2023-11-19",
+      "description": "We need a Social Media Manager to manage and optimize our databases, ensuring data integrity and performance.",
+      "category": "Digital Marketing",
+      "minimum_price": 70000,
+      "maximum_price": 90000
+  },
+  {
+      "employer": "mohananda342@gmail.com",
+      "job_title": "SEO Specialist",
+      "deadline": "2023-11-25",
+      "description": "Join our team as a SEO Specialist to streamline development and deployment processes, ensuring efficient software delivery.",
+      "category": "Digital Marketing",
+      "minimum_price": 75000,
+      "maximum_price": 95000
+  },
+  {
+      "employer": "armanali124@gmail.com",
+      "job_title": "Content Marketing Manager",
+      "deadline": "2023-11-21",
+      "description": "We are seeking a Content Marketing Manager to create mobile applications for iOS and Android platforms.",
+      "category": "Digital Marketing",
+      "minimum_price": 65000,
+      "maximum_price": 85000
+  },
+  {
+      "employer": "shuvopaul76@gmail.com",
+      "job_title": "Brand Identity Designer",
+      "deadline": "2023-11-16",
+      "description": "As a Brand Identity Designer, you will analyze and interpret data to provide valuable insights for our organization.",
+      "category": "Graphic Design",
+      "minimum_price": 75000,
+      "maximum_price": 95000
+  },
+  {
+      "employer": "mission931@gmail.com",
+      "job_title": "Art Director",
+      "deadline": "2023-11-23",
+      "description": "We need a Art Director to maintain and optimize our network infrastructure, ensuring connectivity and security.",
+      "category": "Graphic Design",
+      "minimum_price": 70000,
+      "maximum_price": 90000
+  },
+  {
+      "employer": "imam653@gmail.com",
+      "job_title": "UI/UX Designer",
+      "deadline": "2023-11-24",
+      "description": "Join our team as a UI/UX Designer to create engaging and informative content for our websites and marketing materials.",
+      "category": "Graphic Design",
+      "minimum_price": 55000,
+      "maximum_price": 75000
+  },
+  {
+      "employer": "muradkhan274@gmail.com",
+      "job_title": "Graphic Designer",
+      "deadline": "2023-11-19",
+      "description": "We are looking for a creative Graphic Designer to design visual assets and graphics for our digital and print materials.",
+      "category": "Graphic Design",
+      "minimum_price": 60000,
+      "maximum_price": 80000
+  }
+]

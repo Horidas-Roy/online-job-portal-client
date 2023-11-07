@@ -1,24 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import WebDev from "../webDev/webDev";
+
 const CategoryTab = () => {
-    const [tabIndex,setTabIndex]=useState(0)
+    const [selectedTab,setSelectedTab]=useState('Web Development')
+    const [jobs,setJobs]=useState([]);
+
+    const handleTabClick=(tab)=>{
+        setSelectedTab(tab)
+    }
+     
+    useEffect(()=>{
+        fetch(`http://localhost:5000/category/${selectedTab}`)
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data)
+          setJobs(data)
+        })
+    },[selectedTab])
   return (
-    <Tabs selectedIndex={tabIndex} onSelect={(index)=>setTabIndex(index)}>
+    <Tabs>
       <TabList>
-        <Tab>Title 1</Tab>
-        <Tab>Title 2</Tab>
-        <Tab>Title 2</Tab>
+        <Tab onClick={()=>handleTabClick('Web Development')}><h2 className="font-semibold">Web Development</h2></Tab>
+        <Tab onClick={()=>handleTabClick('Digital Marketing')}><h2 className="font-semibold">Digital Marketing</h2></Tab>
+        <Tab onClick={()=>handleTabClick('Graphic Design')}><h2 className="font-semibold">Graphic Design</h2></Tab>
       </TabList>
 
       <TabPanel>
-        <h2>Any content 1</h2>
+        <div>
+        {/* <h2>Web Development</h2> */}
+           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+            {
+              jobs.map(job=><WebDev
+              key={job._id}
+              job={job}
+              ></WebDev>)
+            }
+           </div>
+        </div>
       </TabPanel>
       <TabPanel>
-        <h2>Any content 2</h2>
+        <div>
+        {/* <h2>Digital Marketing</h2> */}
+           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+            {
+              jobs.map(job=><WebDev
+              key={job._id}
+              job={job}
+              ></WebDev>)
+            }
+           </div>
+        </div>
       </TabPanel>
       <TabPanel>
-      <h2>Any content 3</h2>
+      <div>
+        {/* <h2>Graphic Design</h2> */}
+           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+            {
+              jobs.map(job=><WebDev
+              key={job._id}
+              job={job}
+              ></WebDev>)
+            }
+           </div>
+        </div>
       </TabPanel>
     </Tabs>
   );
