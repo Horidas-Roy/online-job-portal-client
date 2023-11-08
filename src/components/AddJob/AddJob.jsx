@@ -1,7 +1,41 @@
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddJob = () => {
+  const {user}=useContext(AuthContext);
+
+
+  const handleAddJob=(e)=>{
+    e.preventDefault();
+    const form=e.target;
+    const employer=form.employer.value;
+    const job_title=form.job_title.value;
+    const category=form.category.value;
+    const minimum_price=form.minimum_price.value;
+    const maximum_price=form.maximum_price.value;
+    const icon=form.icon.value;
+    const description=form.description.value;
+    const job={
+        employer,icon,job_title,category,minimum_price,maximum_price,description
+    }
+    console.log(job)
+
+    fetch('http://localhost:5000/addJob',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(job)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+    })
+
+  }
+
   return (
-    <div>
+    <form onSubmit={handleAddJob}>
       <div className="flex justify-center gap-5">
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -9,6 +43,8 @@ const AddJob = () => {
           </label>
           <input
             type="email"
+            name="employer"
+            defaultValue={user?.email}
             placeholder="Type here Email"
             className="input input-bordered w-full max-w-xs"
           />
@@ -19,6 +55,7 @@ const AddJob = () => {
           </label>
           <input
             type="text"
+            name='job_title'
             placeholder="Type here Job title"
             className="input input-bordered w-full max-w-xs"
           />
@@ -30,7 +67,8 @@ const AddJob = () => {
             <span className="label-text">Deadline</span>
           </label>
           <input
-            type="text"
+            type="date"
+            name="deadline"
             placeholder="Type here deadline"
             className="input input-bordered w-full max-w-xs"
           />
@@ -39,32 +77,47 @@ const AddJob = () => {
           <label className="label">
             <span className="label-text">Category</span>
           </label>
-          <select name="" id="" className="border py-3 rounded-lg px-2">
-            <option value="">Web Development</option>
-            <option value="">Digital Marketing</option>
-            <option value="">Graphics Design</option>
+          <select name="category" id="" className="border py-3 rounded-lg px-2">
+            <option value="Web Development">Web Development</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Graphics Design">Graphics Design</option>
           </select>
         </div>
       </div>
       <div className="flex justify-center gap-5">
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">Minimum price</span>
+            <span className="label-text">Minimum price($)</span>
           </label>
           <input
             type="text"
+            name="minimum_price"
             placeholder="Type here Minimum price"
             className="input input-bordered w-full max-w-xs"
           />
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text">Maximum price</span>
+            <span className="label-text">Maximum price($)</span>
           </label>          <input
             type="text"
+            name="maximum_price"
             placeholder="Type here Maximum price"
             className="input input-bordered w-full max-w-xs"
           />
+        </div>
+      </div>
+      <div className="flex justify-center gap-5">
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">PhotoURL</span>
+          </label>
+          <input
+          type="text"
+            className="input input-bordered w-[51vw]"
+            name="icon"
+            placeholder="photoURL of this post"
+          ></input>
         </div>
       </div>
       <div className="flex justify-center gap-5">
@@ -74,14 +127,15 @@ const AddJob = () => {
           </label>
           <textarea
             className="textarea textarea-bordered h-24 w-[52vw]"
+            name="description"
             placeholder="Write here"
           ></textarea>
         </div>
       </div>
       <div className="flex justify-center gap-5 my-5">
-           <button className="bg-[#007456] w-[52vw] py-2 rounded-lg">Add Job</button>
+           <input type="submit" value='Add Job' className="bg-[#007456] w-[52vw] py-2 rounded-lg"></input>
       </div>
-    </div>
+    </form>
   );
 };
 
