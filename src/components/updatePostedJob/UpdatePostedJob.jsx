@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const UpdatePostedJob = () => {
     
@@ -21,7 +22,6 @@ const UpdatePostedJob = () => {
         const UpdateJob={
             employer,icon,job_title,category,minimum_price,maximum_price,description
         }
-        console.log(UpdateJob)
          
         fetch(`http://localhost:5000/updateJob/${job._id}`,{
             method:'PUT',
@@ -32,7 +32,11 @@ const UpdatePostedJob = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
+            if(data.modifiedCount>0){
+                toast("Job Updated Successfully");
+                setJob(UpdateJob);
+            }
         })
       }
     return (
@@ -143,6 +147,7 @@ const UpdatePostedJob = () => {
       <div className="flex justify-center gap-5 my-5">
            <input type="submit" value='Update Job' className="bg-[#007456] w-[52vw] py-2 text-white hover:bg-[#239375] rounded-lg"></input>
       </div>
+      <ToastContainer></ToastContainer>
     </form>
     );
 };
