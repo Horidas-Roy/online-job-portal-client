@@ -22,7 +22,9 @@ const MypostedJobCard = ({job,handleUpdatePostJob,handleDeleteJobs}) => {
             
           <div className='flex justify-center items-center gap-10'>
           <div className="card-actions justify-center pt-3">
-            <button onClick={()=>handleUpdatePostJob(_id)} className="btn text-white bg-[#007456] hover:bg-[rgb(21,148,114)]   ">Update</button>
+            <Link to={`/updateJob/${_id}`}>
+            <button className="btn text-white bg-[#007456] hover:bg-[rgb(21,148,114)]">Update</button>
+            </Link>
           </div>
           <div className="card-actions justify-center pt-3">
             <button onClick={()=>handleDeleteJobs(_id)} className="btn text-white bg-[#007456] hover:bg-[rgb(21,148,114)]   ">Delete</button>

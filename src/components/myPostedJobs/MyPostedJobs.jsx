@@ -11,6 +11,15 @@ const MyPostedJobs = () => {
     }
     const handleDeleteJobs=(id)=>{
         console.log('delete',id)
+        fetch(`http://localhost:5000/deleteJob/${id}`,{
+            method:'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            const resmaining=jobs.filter(job=>job._id !== id)
+            setJobs(resmaining)
+        })
     }
     return (
         <div>
