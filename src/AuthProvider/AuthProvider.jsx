@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
       setUser(curentUser);
       setLoading(false);
 
-        
+      if(curentUser){
       axios
           .post("https://online-job-portal-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
@@ -60,17 +60,15 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             console.log("token response", res.data);
           });
-
-        // if(curentUser){
           
-        // }else{
-        //    axios.post('https://online-job-portal-server.vercel.app/logout',loggedUser,{
-        //     withCredentials:true,
-        //    })
-        //    .then(res=>{
-        //        console.log(res.data)
-        //    })
-        // }
+        }else{
+           axios.post('https://online-job-portal-server.vercel.app/logout',loggedUser,{
+            withCredentials:true,
+           })
+           .then(res=>{
+               console.log(res.data)
+           })
+        }
     });
       
       return ()=>{
