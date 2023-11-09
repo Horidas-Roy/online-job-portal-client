@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddJob = () => {
   const {user}=useContext(AuthContext);
@@ -20,7 +21,7 @@ const AddJob = () => {
     }
     console.log(job)
 
-    fetch('http://localhost:5000/addJob',{
+    fetch('https://online-job-portal-server.vercel.app/addJob',{
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -30,6 +31,7 @@ const AddJob = () => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
+      toast("Job added successfully")
     })
 
   }
@@ -133,8 +135,9 @@ const AddJob = () => {
         </div>
       </div>
       <div className="flex justify-center gap-5 my-5">
-           <input type="submit" value='Add Job' className="bg-[#007456] w-[52vw] py-2 rounded-lg"></input>
+           <input type="submit" value='Add Job' className="bg-[#007456] w-[52vw] py-2 rounded-lg text-white font-bold"></input>
       </div>
+      <ToastContainer></ToastContainer>
     </form>
   );
 };

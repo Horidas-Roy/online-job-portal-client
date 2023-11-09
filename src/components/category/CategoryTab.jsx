@@ -12,7 +12,7 @@ const CategoryTab = () => {
     }
      
     useEffect(()=>{
-        fetch(`http://localhost:5000/category/${selectedTab}`)
+        fetch(`https://online-job-portal-server.vercel.app/category/${selectedTab}`)
         .then(res=>res.json())
         .then(data=>{
           // console.log(data)
@@ -30,9 +30,9 @@ const CategoryTab = () => {
       <TabPanel>
         <div>
         {/* <h2>Web Development</h2> */}
-           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-10 pb-20 px-4">
             {
-              jobs.map(job=><WebDev
+              jobs.slice(0,4).map(job=><WebDev
               key={job._id}
               job={job}
               ></WebDev>)
@@ -43,7 +43,7 @@ const CategoryTab = () => {
       <TabPanel>
         <div>
         {/* <h2>Digital Marketing</h2> */}
-           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-10 pb-20 px-4">
             {
               jobs.map(job=><WebDev
               key={job._id}
@@ -56,7 +56,7 @@ const CategoryTab = () => {
       <TabPanel>
       <div>
         {/* <h2>Graphic Design</h2> */}
-           <div className="grid grid-cols-4 gap-4 pt-10 pb-20 px-4">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-10 pb-20 px-4">
             {
               jobs.map(job=><WebDev
               key={job._id}

@@ -7,9 +7,11 @@ import UploadCv from '../../components/extraSection/UploadCv';
 const Home = () => {
     return (
         <div>
+            <div>
             <Banner></Banner>
+            </div>
             <div className='text-center mt-10'>
-                <div className='text-start px-5'>
+                <div className='md:text-start p-4'>
                 <h2 className='text-4xl font-semibold text-[#000]'>Popular category</h2>
                 <p className='text-2xl font-medium mt-2'>2023 jobs live – 293 added today.</p>
                 </div>

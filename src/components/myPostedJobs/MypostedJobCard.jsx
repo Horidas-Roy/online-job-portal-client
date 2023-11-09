@@ -18,7 +18,7 @@ const MypostedJobCard = ({job,handleUpdatePostJob,handleDeleteJobs}) => {
               <h2>Price Range: ${maximum_price+'~$'+minimum_price}</h2>
               <h2>Deadline:{deadline}</h2>
           </div>
-          <div>{description.slice(0,100)}  ...</div>
+          <div>{description} ...</div>
             
           <div className='flex justify-center items-center gap-10'>
           <div className="card-actions justify-center pt-3">

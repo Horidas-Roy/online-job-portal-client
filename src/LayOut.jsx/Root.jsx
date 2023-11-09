@@ -6,7 +6,7 @@ import Footer from "../components/footer/Footer";
 const Root = () => {
   return (
     <div>
-      <div className="font-semibold">
+      <div>
         <Navbar></Navbar>
       </div>
       <Outlet></Outlet>

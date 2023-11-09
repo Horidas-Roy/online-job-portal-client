@@ -8,7 +8,7 @@ const WebDev = ({ job }) => {
     <div className="card card-compact bg-base-200 shadow-xl p-3">
       <figure>
         <img
-        className="w-1/2 py-3"
+        className="w-full md:w-1/2 py-3"
           src={icon}
           alt="Shoes"
         />

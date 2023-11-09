@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -28,10 +29,10 @@ const JobDetails = () => {
     const price = form.price.value;
     const status='pending'
     const user={
-      employer,applicant,deadline,price,status,job_title
+      employer,applicant,deadline,price,status,job_title,status
     }
     console.log(user);
-    fetch('http://localhost:5000/bids',{
+    fetch('https://online-job-portal-server.vercel.app/bids',{
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -47,14 +48,14 @@ const JobDetails = () => {
   };
 
   return (
-    <form onSubmit={handleProjectBit} className="bg-base-200">
+    <div className="bg-base-200">
       <div className="hero bg-base-200">
         <div className="hero-content flex-col  lg:flex-row">
-          <div className="w-1/4 flex justify-center items-center">
+          <div className="w-1/2 md:w-1/4 flex flex-col md:flex-row justify-center items-center">
             <img src={icon} className="w-1/2 rounded-lg shadow-2xl" />
           </div>
           <div className="w-2/3">
-            <h1 className="text-5xl font-bold">{job_title}</h1>
+            <h1 className="text-3xl md:text-5xl font-bold">{job_title}</h1>
             <p className="my-2">
               Price Range: ${maximum_price}~${minimum_price}
             </p>
@@ -63,10 +64,10 @@ const JobDetails = () => {
           </div>
         </div>
       </div>
-      <div className="text-center">
+      <form onSubmit={handleProjectBit} className="text-center">
         <h2 className="text-4xl font-semibold pt-10">Your Bid Form</h2>
         <div className="pt-10 pb-20">
-          <div className="flex justify-center gap-5">
+          <div className="flex flex-col md:flex-row justify-center px-5 gap-5">
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -94,7 +95,7 @@ const JobDetails = () => {
               />
             </div>
           </div>
-          <div className="flex justify-center gap-5">
+          <div className="flex flex-col md:flex-row justify-center px-5 gap-5">
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text">Deadline</span>
@@ -131,9 +132,9 @@ const JobDetails = () => {
             ></input>
           </div>
         </div>
-      </div>
       <ToastContainer></ToastContainer>
-    </form>
+      </form>
+    </div>
   );
 };
 

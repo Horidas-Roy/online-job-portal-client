@@ -11,7 +11,7 @@ const MyPostedJobs = () => {
     }
     const handleDeleteJobs=(id)=>{
         console.log('delete',id)
-        fetch(`http://localhost:5000/deleteJob/${id}`,{
+        fetch(`https://online-job-portal-server.vercel.app/deleteJob/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())
