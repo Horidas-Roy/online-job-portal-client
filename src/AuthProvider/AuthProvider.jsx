@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -75,7 +76,7 @@ const AuthProvider = ({ children }) => {
          return unSubscribe();
       }
      
-  }, []);
+  }, [user]);
 
   const authInfo = {
     createUser,

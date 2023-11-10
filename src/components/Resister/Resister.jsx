@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -9,7 +9,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Resister = () => {
   const [loginErr,setLoginErr]=useState();
   const { createUser,updateUser,logOut } = useContext(AuthContext);
-  const location=useLocation();
+  // const location=useLocation();
   const navigate=useNavigate();
   
 
