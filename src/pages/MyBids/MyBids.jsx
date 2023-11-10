@@ -54,7 +54,11 @@ const MyBids = () => {
      .then(res=>res.json())
      .then(data=>{
       console.log(data)
-        setStatus(status)
+        const remaining=bids.filter(bid=>bid._id !== id)
+        const updated =bids.find(bid=>bid._id === id)
+        updated.status='complete'
+        const newBids=[updated,...remaining]
+        setBids(newBids)
      })
   }
 

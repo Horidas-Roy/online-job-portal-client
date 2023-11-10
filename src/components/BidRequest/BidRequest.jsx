@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const BidRequest = () => {
-  const [status,setStatus]=useState('pending')
+  const [status,setStatus]=useState()
   // const bids=useLoaderData()
   const [bids,setBids]=useState([])
 
@@ -50,8 +50,14 @@ const BidRequest = () => {
       .then(data=>{
         console.log(data)
         if(data.modifiedCount>0){
-          setStatus('in progress')
+          // setStatus('in progress')
           toast('Accepted')
+          // update state
+          const remaining= bids.filter(bid=>bid._id !== id)
+          const updated = bids.find(bid=>bid._id === id)
+          updated.status='in progress'
+          const newBids=[updated, ...remaining]
+          setBids(newBids)
         }
 
       })
@@ -73,7 +79,11 @@ const BidRequest = () => {
         console.log(data)
           if(data.modifiedCount>0){
             toast("rejected")
-            setStatus('rejected')
+            const remaining=bids.filter(bid=>bid._id !== id)
+            const updated=bids.find(bid=>bid._id === id)
+            updated.rejected='rejected'
+            const newBids=[updated,...remaining]
+            setBids(newBids)
           }
        })
     }
@@ -103,16 +113,16 @@ const BidRequest = () => {
             <td>{bid?.applicant}</td>
             <td>{bid?.deadline}</td>
             <td>{bid?.price}</td>
-            <td>{status}</td>
+            <td>{bid?.status}</td>
             <td>
              { <button onClick={()=>handleAcceptStatus(status,bid._id)}
-            disabled={status === 'rejected' ||status === 'in progress'}
-            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || status === 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Accept</button>}
+            disabled={bid?.status === 'rejected' ||bid?.status === 'in progress' ||bid?.status === 'complete' }
+            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(bid?.status === 'rejected' || bid?.status === 'in progress' ||bid?.status === 'complete') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Accept</button>}
             </td>
             <td><button 
-             disabled={status === 'rejected' ||status === 'in progress'}
+             disabled={bid?.status === 'rejected' || bid?.status === 'in progress'||bid?.status === 'complete'}
              onClick={()=>handleRejectedStatus(bid._id)}
-            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || status === 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Reject</button></td>
+            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(bid?.status === 'rejected' || bid?.status === 'in progress'||bid?.status === 'complete') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Reject</button></td>
           </tr>)
           }
           
