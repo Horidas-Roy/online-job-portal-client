@@ -16,7 +16,7 @@ const CategoryTab = () => {
     const {data : jobItems,isPending}=useQuery({
         queryKey:['data',selectedTab],
         queryFn:async()=>{
-           const res =await fetch(`http://localhost:5000/category/${selectedTab}`)
+           const res =await fetch(`https://online-job-portal-server.vercel.app/category/${selectedTab}`)
            return res.json()
         },
         retry:10
@@ -34,7 +34,7 @@ const CategoryTab = () => {
    }
 
     // useEffect(()=>{
-    //     fetch(`http://localhost:5000/category/${selectedTab}`)
+    //     fetch(`https://online-job-portal-server.vercel.app/category/${selectedTab}`)
     //     .then(res=>res.json())
     //     .then(data=>{
     //       // console.log(data)

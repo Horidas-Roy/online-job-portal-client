@@ -50,27 +50,27 @@ const router = createBrowserRouter([
         {
           path:'/jobs/:id',
           element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/jobs/${params.id}`)
         },
         {
           path:'/myBids',
           element:<PrivateRoute><MyBids></MyBids></PrivateRoute>,
-          // loader:({params})=>fetch(`http://localhost:5000/bids/${params.userEmail}`)
+          // loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/bids/${params.userEmail}`)
         },
         {
           path:'/bidsReq',
           element:<PrivateRoute><BidRequest></BidRequest></PrivateRoute>,
-          // loader:({params})=>fetch(`http://localhost:5000/bidReq/${params.userEmail}`)
+          // loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/bidReq/${params.userEmail}`)
         },
         {
           path:'/postedJobs',
           element:<PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>,
-          // loader:({params})=>fetch(`http://localhost:5000/postedJobs/${params.userEmail}`)
+          // loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/postedJobs/${params.userEmail}`)
         },
         {
           path:'/updateJob/:id',
           element:<UpdatePostedJob></UpdatePostedJob>,
-          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
+          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/jobs/${params.id}`)
         }
     ]
 }

@@ -14,7 +14,7 @@ const MyPostedJobs = () => {
     const {data:jobItems,isPending}=useQuery({
         queryKey:['jobItem',user],
         queryFn:async()=>{
-            const res=await fetch(`http://localhost:5000/postedJobs?email=${user?.email}`)
+            const res=await fetch(`https://online-job-portal-server.vercel.app/postedJobs?email=${user?.email}`)
             const data=await res.json()
             return data
         },
@@ -39,7 +39,7 @@ const MyPostedJobs = () => {
     }
     const handleDeleteJobs=(id)=>{
         console.log('delete',id)
-        fetch(`http://localhost:5000/deleteJob/${id}`,{
+        fetch(`https://online-job-portal-server.vercel.app/deleteJob/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())

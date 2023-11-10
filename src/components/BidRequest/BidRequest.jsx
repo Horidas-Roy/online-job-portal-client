@@ -18,7 +18,7 @@ const BidRequest = () => {
    const {data:bidItems,isPending}=useQuery({
          queryKey:['bids',user],
          queryFn:async()=>{
-             const res=await fetch(`http://localhost:5000/bidsReq?email=${user?.email}`)
+             const res=await fetch(`https://online-job-portal-server.vercel.app/bidsReq?email=${user?.email}`)
              const data=await res.json()
              return data
          },
@@ -39,7 +39,7 @@ const BidRequest = () => {
      
     const handleAcceptStatus=async(status,id)=>{
 
-      await fetch(`http://localhost:5000/status/${id}`,{
+      await fetch(`https://online-job-portal-server.vercel.app/status/${id}`,{
         method:'PATCH',
         headers:{
           'content-type':'application/json'
@@ -67,7 +67,7 @@ const BidRequest = () => {
     const handleRejectedStatus=(id)=>{
       console.log('rejected status')
       
-       fetch(`http://localhost:5000/status/${id}`,{
+       fetch(`https://online-job-portal-server.vercel.app/status/${id}`,{
            method:'PATCH',
            headers:{
             'content-type':'application/json'

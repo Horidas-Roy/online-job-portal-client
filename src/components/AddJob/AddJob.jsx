@@ -23,7 +23,7 @@ const AddJob = () => {
     }
     console.log(job)
 
-    fetch('http://localhost:5000/addJob',{
+    fetch('https://online-job-portal-server.vercel.app/addJob',{
       method:'POST',
       headers:{
         'content-type':'application/json'

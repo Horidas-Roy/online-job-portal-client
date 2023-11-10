@@ -35,7 +35,7 @@ const JobDetails = () => {
       employer,applicant,deadline,price,status,job_title,status
     }
     console.log(bid);
-    fetch('http://localhost:5000/bids',{
+    fetch('https://online-job-portal-server.vercel.app/bids',{
       method:'POST',
       headers:{
         'content-type':'application/json'

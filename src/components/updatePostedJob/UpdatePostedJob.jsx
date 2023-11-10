@@ -23,7 +23,7 @@ const UpdatePostedJob = () => {
             employer,icon,job_title,category,minimum_price,maximum_price,description
         }
          
-        fetch(`http://localhost:5000/updateJob/${job._id}`,{
+        fetch(`https://online-job-portal-server.vercel.app/updateJob/${job._id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
