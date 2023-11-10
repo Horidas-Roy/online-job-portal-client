@@ -58,9 +58,9 @@ const router = createBrowserRouter([
           // loader:({params})=>fetch(`http://localhost:5000/bids/${params.userEmail}`)
         },
         {
-          path:'/bidsReq/:userEmail',
+          path:'/bidsReq',
           element:<PrivateRoute><BidRequest></BidRequest></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/bidReq/${params.userEmail}`)
+          // loader:({params})=>fetch(`http://localhost:5000/bidReq/${params.userEmail}`)
         },
         {
           path:'/postedJobs',

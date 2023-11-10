@@ -25,7 +25,7 @@ const Navbar = () => {
         <NavLink to={`/myBids`}>My Bids</NavLink>
       </li>
       <li>
-        <NavLink to={`/bidsReq/${user?.email}`}>Bid Requests</NavLink>
+        <NavLink to={`/bidsReq`}>Bid Requests</NavLink>
       </li>
         </>
       }
