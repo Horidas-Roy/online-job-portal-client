@@ -23,7 +23,7 @@ const UpdatePostedJob = () => {
             employer,icon,job_title,category,minimum_price,maximum_price,description
         }
          
-        fetch(`https://online-job-portal-server.vercel.app/updateJob/${job._id}`,{
+        fetch(`http://localhost:5000/updateJob/${job._id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'
@@ -34,8 +34,8 @@ const UpdatePostedJob = () => {
         .then(data=>{
             // console.log(data)
             if(data.modifiedCount>0){
+              setJob(UpdateJob);
                 toast("Job Updated Successfully");
-                setJob(UpdateJob);
             }
         })
       }

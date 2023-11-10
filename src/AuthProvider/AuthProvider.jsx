@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
       if(curentUser){
       axios
-          .post("https://online-job-portal-server.vercel.app/jwt", loggedUser, {
+          .post("http://localhost:5000/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
           });
           
         }else{
-           axios.post('https://online-job-portal-server.vercel.app/logout',loggedUser,{
+           axios.post('http://localhost:5000/logout',loggedUser,{
             withCredentials:true,
            })
            .then(res=>{

@@ -15,16 +15,18 @@ const WebDev = ({ job }) => {
       </figure>
       <div className="card-body text-start">
         <h2 className="card-title">{job_title}</h2>
+        <div className="flex flex-col h-[100%]">
         <div className="text-lg">
             <h2>Price Range: ${maximum_price+'~$'+minimum_price}</h2>
             <h2>Deadline:{deadline}</h2>
         </div>
-        <div>{description.slice(0,100)}  ...</div>
+        <div className="flex-grow">{description.slice(0,100)}  ...</div>
           <Link to={`/jobs/${_id}`}>
         <div className="card-actions justify-center pt-3">
-          <button className="btn text-white bg-[#007456] hover:bg-[rgb(21,148,114)]  w-1/2 ">Bid Now</button>
+          <button className="btn text-white  bg-[#007456] hover:bg-[rgb(21,148,114)]  w-1/2 ">Bid Now</button>
         </div>
           </Link>
+        </div>
       </div>
     </div>
   );

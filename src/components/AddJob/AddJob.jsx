@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
   const {user}=useContext(AuthContext);
+  const navigate=useNavigate()
 
 
   const handleAddJob=(e)=>{
@@ -21,7 +23,7 @@ const AddJob = () => {
     }
     console.log(job)
 
-    fetch('https://online-job-portal-server.vercel.app/addJob',{
+    fetch('http://localhost:5000/addJob',{
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -31,7 +33,9 @@ const AddJob = () => {
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
-      toast("Job added successfully")
+      toast.success("Job added successfully",{
+        onClose:()=> navigate(`/postedJobs/${user?.email}`)
+      })
     })
 
   }
@@ -82,7 +86,7 @@ const AddJob = () => {
           <select name="category" id="" className="border py-3 rounded-lg px-2">
             <option value="Web Development">Web Development</option>
             <option value="Digital Marketing">Digital Marketing</option>
-            <option value="Graphics Design">Graphics Design</option>
+            <option value="Graphic Design">Graphic Design</option>
           </select>
         </div>
       </div>

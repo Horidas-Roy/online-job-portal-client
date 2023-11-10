@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-keys */
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import {  Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,8 @@ const JobDetails = () => {
   const { user } = useContext(AuthContext);
   console.log(user?.email);
   const job = useLoaderData();
+  const navigate=useNavigate()
+  
   const {
     job_title,
     deadline,
@@ -20,6 +22,7 @@ const JobDetails = () => {
   } = job;
   console.log(job);
 
+
   const handleProjectBit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -28,21 +31,26 @@ const JobDetails = () => {
     const deadline = form.deadline.value;
     const price = form.price.value;
     const status='pending'
-    const user={
+    const bid={
       employer,applicant,deadline,price,status,job_title,status
     }
-    console.log(user);
-    fetch('https://online-job-portal-server.vercel.app/bids',{
+    console.log(bid);
+    fetch('http://localhost:5000/bids',{
       method:'POST',
       headers:{
         'content-type':'application/json'
       },
-      body:JSON.stringify(user)
+      body:JSON.stringify(bid)
     })
     .then(res=>res.json())
     .then(data=>{
       console.log(data)
-      toast("BID ON THIS PROJECT IS SUCCESSFULL!")
+      toast.success("BID ON THIS PROJECT IS SUCCESSFULL!",{
+        onClose:()=>{
+          return  navigate(`/myBids/${user?.email}`)
+        }
+      })
+      
     })
 
   };

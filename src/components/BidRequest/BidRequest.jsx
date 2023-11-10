@@ -1,40 +1,49 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import "react-step-progress-bar/styles.css";
+import { toast } from 'react-toastify';
 
 const BidRequest = () => {
   const [status,setStatus]=useState('pending')
   const bids=useLoaderData()
     // console.log(bids);
     const handleAcceptStatus=(id)=>{
-         setStatus('in progress')
-      fetch(`https://online-job-portal-server.vercel.app/acceptStatus/${id}`,{
-        method:'PUT',
+
+      fetch(`http://localhost:5000/status/${id}`,{
+        method:'PATCH',
         headers:{
           'content-type':'application/json'
         },
-        body:JSON.stringify({status})
+        body:JSON.stringify({status:'in progress'})
       })
       .then(res=>res.json())
       .then(data=>{
         console.log(data)
+        if(data.modifiedCount>0){
+           toast('Accepted')
+           setStatus('in progress')
+        }
       })
         
     }
 
     const handleRejectedStatus=(id)=>{
       console.log('rejected status')
-      setStatus('rejected')
-       fetch(`https://online-job-portal-server.vercel.app/acceptStatus/${id}`,{
-           method:'PUT',
+      
+       fetch(`http://localhost:5000/status/${id}`,{
+           method:'PATCH',
            headers:{
             'content-type':'application/json'
            },
-           body:JSON.stringify({status})
+           body:JSON.stringify({status:'rejected'})
        })
        .then(res=>res.json())
        .then(data=>{
         console.log(data)
+          if(data.modifiedCount>0){
+            toast("rejected")
+            setStatus('rejected')
+          }
        })
     }
 
@@ -65,16 +74,16 @@ const BidRequest = () => {
             <td>{bid?.applicant}</td>
             <td>{bid?.deadline}</td>
             <td>{bid?.price}</td>
-            <td>{bid?.status? bid.status: status}</td>
+            <td>{status}</td>
             <td>
              { <button onClick={()=>handleAcceptStatus(bid._id)}
-            disabled={status === 'rejected' || 'in progress'}
-            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Accept</button>}
+            disabled={status === 'rejected' ||status === 'in progress'}
+            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || status === 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Accept</button>}
             </td>
             <td><button 
-             disabled={status === 'rejected' || 'in progress'}
+             disabled={status === 'rejected' ||status === 'in progress'}
              onClick={()=>handleRejectedStatus(bid._id)}
-            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Reject</button></td>
+            className={`bg-[#007456] hover:bg-[#2b8f75] px-3 py-2 rounded-lg text-white ${(status === 'rejected' || status === 'in progress') && 'bg-[#30977c] hover:bg-[#30977c]'}`}>Reject</button></td>
           </tr>)
           }
           

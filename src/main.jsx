@@ -20,6 +20,11 @@ import MyPostedJobs from './components/myPostedJobs/MyPostedJobs';
 import UpdatePostedJob from './components/updatePostedJob/UpdatePostedJob';
 import PrivateRoute from './routes/PrivateRoute';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
 const router = createBrowserRouter([
   {
     path:'/',
@@ -45,37 +50,41 @@ const router = createBrowserRouter([
         {
           path:'/jobs/:id',
           element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/jobs/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
         },
         {
           path:'/myBids/:userEmail',
           element:<PrivateRoute><MyBids></MyBids></PrivateRoute>,
-          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/bids/${params.userEmail}`)
+          loader:({params})=>fetch(`http://localhost:5000/bids/${params.userEmail}`)
         },
         {
           path:'/bidsReq/:userEmail',
           element:<PrivateRoute><BidRequest></BidRequest></PrivateRoute>,
-          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/bidReq/${params.userEmail}`)
+          loader:({params})=>fetch(`http://localhost:5000/bidReq/${params.userEmail}`)
         },
         {
-          path:'/postedJobs/:userEmail',
+          path:'/postedJobs',
           element:<PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>,
-          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/postedJobs/${params.userEmail}`)
+          // loader:({params})=>fetch(`http://localhost:5000/postedJobs/${params.userEmail}`)
         },
         {
           path:'/updateJob/:id',
           element:<UpdatePostedJob></UpdatePostedJob>,
-          loader:({params})=>fetch(`https://online-job-portal-server.vercel.app/jobs/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/jobs/${params.id}`)
         }
     ]
 }
 ]);
 
+const queryClient = new QueryClient()
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <AuthProvider>
+    <QueryClientProvider client={queryClient}>
+    <AuthProvider>
      <RouterProvider router={router} />
      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )

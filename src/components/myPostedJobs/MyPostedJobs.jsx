@@ -1,17 +1,45 @@
 import { useLoaderData } from "react-router-dom";
 import MypostedJobCard from "./MypostedJobCard";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useEffect } from "react";
 
 const MyPostedJobs = () => {
-    const jobsItem=useLoaderData();
-    const [jobs,setJobs]=useState(jobsItem);
+    // const jobsItem=useLoaderData();
+    const [jobs,setJobs]=useState([]);
+    const {user}=useContext(AuthContext)
+
+    const {data:jobItems,isPending}=useQuery({
+        queryKey:['jobItem',user],
+        queryFn:async()=>{
+            const res=await fetch(`http://localhost:5000/postedJobs?email=${user?.email}`)
+            const data=await res.json()
+            return data
+        },
+        retry:10
+    })
+
+    console.log(jobItems)
+
+    useEffect(()=>{
+        if(jobItems){
+            setJobs(jobItems)
+        }
+    },[jobItems])
+   
+    if(isPending){
+        return <span className="loading loading-infinity loading-lg"></span>
+    }
+
     console.log(jobs)
     const handleUpdatePostJob=(id)=>{
              console.log('upadte',id)
     }
     const handleDeleteJobs=(id)=>{
         console.log('delete',id)
-        fetch(`https://online-job-portal-server.vercel.app/deleteJob/${id}`,{
+        fetch(`http://localhost:5000/deleteJob/${id}`,{
             method:'DELETE'
         })
         .then(res=>res.json())

@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MyBidRow from "./MyBidRow";
 
 const MyBids = () => {
     
     const bids=useLoaderData();
-    const [status,setStatus]=useState()
+    const [status,setStatus]=useState('')
     console.log(bids)
-    const handleComplete=(id)=>{
-      console.log('complete',id)
-    //   setStatus('complete');
-    //   fetch(`https://online-job-portal-server.vercel.app/acceptStatus/${id}`,{
+    const handleComplete=(status)=>{
+      console.log('status',status)
+      setStatus('complete');
+    //   fetch(`http://localhost:5000/acceptStatus/${id}`,{
     //      method:'PUT',
     //      headers:{
     //       'content-type':'application/json'
@@ -22,6 +22,13 @@ const MyBids = () => {
     //   console.log(data)
     //  })
   }
+   
+  useEffect(()=>{
+    if(status){
+      setStatus(status)
+    }
+  },[status])
+
   return (
     <div className="overflow-x-auto px-20 py-10">
       <table className="table table-xs">

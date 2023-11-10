@@ -8,7 +8,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Resister = () => {
   const [loginErr,setLoginErr]=useState();
-  const { createUser,updateUser } = useContext(AuthContext);
+  const { createUser,updateUser,logOut } = useContext(AuthContext);
   const location=useLocation();
   const navigate=useNavigate();
   
@@ -37,11 +37,12 @@ const Resister = () => {
       const user=result.user
       console.log(user);
       
-      navigate(location?.state?location.state:'/');
+      // navigate(location?.state?location.state:'/');
+      
+      updateUser(user,name,photoURL);
+      logOut();
       Swal.fire('Resister is Successfull!')
-
-      return updateUser(user,name,photoURL);
-        
+      navigate("/login")
     })
     .catch(error=>{
       console.log(error);
