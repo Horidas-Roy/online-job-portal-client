@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 
-const MypostedJobCard = ({job,handleUpdatePostJob,handleDeleteJobs}) => {
+const MypostedJobCard = ({job,handleDeleteJobs}) => {
     const {_id,deadline,description,icon,job_title,maximum_price,minimum_price}=job
     return (
         <div className="card card-compact bg-base-200 shadow-xl p-3">

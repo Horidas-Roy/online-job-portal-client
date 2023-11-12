@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 // import { AuthContext } from "../authProvider/AuthProvider";
 
 const Login = () => {
@@ -52,7 +53,11 @@ const Login = () => {
 
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div>
+       <Helmet>
+        <title>Job Portal || Login </title>
+      </Helmet>
+      <div className="hero min-h-screen bg-base-200">
       <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
         <form onSubmit={handleLogIn} className="card-body">
           <h2 className="text-center font-semibold text-2xl">
@@ -113,6 +118,7 @@ const Login = () => {
           </p>
         </form>
       </div>
+    </div>
     </div>
   );
 };

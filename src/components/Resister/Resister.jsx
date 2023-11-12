@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -52,7 +53,11 @@ const Resister = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200 py-10">
+   <div>
+     <Helmet>
+        <title>Job Portal || Resister </title>
+      </Helmet>
+     <div className="hero min-h-screen bg-base-200 py-10">
       <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
         <form onSubmit={handleResister} className="card-body">
           <h2 className="text-center font-semibold text-2xl">
@@ -128,6 +133,7 @@ const Resister = () => {
         </form>
       </div>
     </div>
+   </div>
   );
 };
 

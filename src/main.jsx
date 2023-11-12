@@ -19,6 +19,7 @@ import BidRequest from './components/BidRequest/BidRequest';
 import MyPostedJobs from './components/myPostedJobs/MyPostedJobs';
 import UpdatePostedJob from './components/updatePostedJob/UpdatePostedJob';
 import PrivateRoute from './routes/PrivateRoute';
+import { HelmetProvider } from 'react-helmet-async';
 
 import {
   QueryClient,
@@ -81,10 +82,12 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <HelmetProvider>
     <QueryClientProvider client={queryClient}>
     <AuthProvider>
      <RouterProvider router={router} />
      </AuthProvider>
     </QueryClientProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )

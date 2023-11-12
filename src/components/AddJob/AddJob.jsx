@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddJob = () => {
   const {user}=useContext(AuthContext);
@@ -41,7 +42,11 @@ const AddJob = () => {
   }
 
   return (
-    <form onSubmit={handleAddJob}>
+    <div>
+       <Helmet>
+        <title>Job Portal || Add Job </title>
+      </Helmet>
+      <form onSubmit={handleAddJob}>
       <div className="flex justify-center gap-5">
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -143,6 +148,7 @@ const AddJob = () => {
       </div>
       <ToastContainer></ToastContainer>
     </form>
+    </div>
   );
 };
 

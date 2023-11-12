@@ -12,29 +12,32 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
 
+      {user && (
         <>
-           <li>
-        <NavLink to={`/postedJobs`}>My posted jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addJob">Add job</NavLink>
-      </li>
+          <li>
+            <NavLink to={`/postedJobs`}>My posted jobs</NavLink>
+          </li>
+          <li>
+            <NavLink to="/addJob">Add job</NavLink>
+          </li>
 
-      <li>
-        <NavLink to={`/myBids`}>My Bids</NavLink>
-      </li>
-      <li>
-        <NavLink to={`/bidsReq`}>Bid Requests</NavLink>
-      </li>
+          <li>
+            <NavLink to={`/myBids`}>My Bids</NavLink>
+          </li>
+          <li>
+            <NavLink to={`/bidsReq`}>Bid Requests</NavLink>
+          </li>
         </>
-      
+      )}
 
       {user ? (
         <>
-        <li><h2 className="md:hidden">{user?.displayName}</h2></li>
-        <li>
-          <button onClick={() => logOut()}>LogOut</button>
-        </li>
+          <li>
+            <h2 className="md:hidden">{user?.displayName}</h2>
+          </li>
+          <li>
+            <button onClick={() => logOut()}>LogOut</button>
+          </li>
         </>
       ) : (
         <li>
@@ -79,12 +82,16 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        { user &&
+        {user && (
           <div className="flex gap-3 justify-center items-center">
-          <h2 className="hidden md:flex">{user?.displayName}</h2>
-          <img className="w-12 h-12 rounded-full" src={user?.photoURL} alt="" />
-        </div>
-        }
+            <h2 className="hidden md:flex">{user?.displayName}</h2>
+            <img
+              className="w-12 h-12 rounded-full"
+              src={user?.photoURL}
+              alt=""
+            />
+          </div>
+        )}
       </div>
     </div>
   );

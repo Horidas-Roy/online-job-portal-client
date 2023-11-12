@@ -12,7 +12,7 @@ const MyBidRow = ({bid,idx,handleComplete}) => {
             <td>{bid.employer}</td>
             <td>{bid.deadline}</td>
             <td>{bid.status}</td>
-            {console.log(bid.status)}
+            {/* {console.log(bid.status)} */}
             <td><button 
             onClick={()=>handleComplete(bid.status,bid._id)}
             disabled={bid?.status !== 'in progress'}
