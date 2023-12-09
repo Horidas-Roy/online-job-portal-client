@@ -4,6 +4,10 @@
 
 live link: https://online-job-portal-9c2d1.web.app/
 
+# Technology
+node,mongodb,express,React,tailwind,firbase
+
+# Feature
 •This website provide athentication system
 
 
