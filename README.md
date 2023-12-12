@@ -6,6 +6,10 @@ live link: https://online-job-portal-9c2d1.web.app/
 
 server link: https://github.com/Horidas-Roy/online-job-portal-server
 
+# Technology
+node,mongodb,express,React,tailwind,firbase
+
+# Feature
 •This website provide athentication system
 
 
